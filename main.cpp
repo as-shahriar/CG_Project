@@ -10,6 +10,8 @@ gluOrtho2D(0.0, 1000.0, 0.0, 600.0);
 
 
 void house(GLfloat ax,GLfloat by,GLfloat dx,GLfloat roofh){
+
+
   //left house
     glColor3ub (0,1, 4);
     glBegin(GL_POLYGON);
@@ -30,8 +32,54 @@ void house(GLfloat ax,GLfloat by,GLfloat dx,GLfloat roofh){
     //Roof
     //left house
 }
+
+void circle(GLfloat x,GLfloat y,GLfloat r){
+    glBegin(GL_POLYGON);
+    int i;
+    for(i=0;i<360;i++){
+        float theta=i*3.142/180;
+        glVertex2f(x+r*cos(theta),y+r*sin(theta));
+    }
+    glEnd();
+
+
+}
+
+
+void fench(GLfloat ax,GLfloat by,GLfloat dx,GLfloat caph){
+   house(ax,by,dx,0);
+    glBegin(GL_POLYGON);
+    glVertex2d (ax, by);
+    glVertex2d ((ax+dx)/2, caph);
+    glVertex2d (dx, by);
+    glEnd();
+
+}
+
+void window_line(GLfloat xv,GLfloat y1v,GLfloat y2v,GLfloat x1h,GLfloat x2h,GLfloat y1h,GLfloat y2h){
+    glColor3ub (1,1, 1);
+    glLineWidth(2.5);
+    glBegin(GL_LINES);
+    glVertex3f(xv, y1v, 0.0);
+    glVertex3f(xv, y2v, 0);
+    glEnd();
+
+
+    glColor3ub (1.0,1.0, 0.0);
+
+    glBegin(GL_LINES);
+    glVertex3f(x1h, y1h, 0.0);
+    glVertex3f(x2h, y1h, 0);
+    glEnd();
+
+     glBegin(GL_LINES);
+    glVertex3f(x1h, y2h, 0.0);
+    glVertex3f(x2h, y2h, 0);
+    glEnd();
+}
 void display()
 {
+
     //background
     glColor3ub (19,56, 75);
     glBegin(GL_POLYGON);
@@ -86,12 +134,28 @@ void display()
 
     glColor3ub (0,1, 4);
     glBegin(GL_POLYGON);
-    glVertex2d (495, 285);
-    glVertex2d (495, 295);
-    glVertex2d (535, 295);
-    glVertex2d (535, 285);
+    glVertex2d (497, 285);
+    glVertex2d (497, 290);
+    glVertex2d (533, 290);
+    glVertex2d (533, 285);
     glEnd();
     //Chimni
+
+
+
+    //fench
+  fench(438,150,450,160);
+  fench(460,150,472,160);
+
+  glLineWidth(7.5);
+glBegin(GL_LINES);
+glColor3ub (0,1, 0);
+glVertex3f(410, 135, 0);
+glVertex3f(480, 135, 0);
+glEnd();
+
+
+     //fench
 
     //side house
     glColor3ub (0,1, 4);
@@ -110,6 +174,91 @@ void display()
     //side house
 
 
+    //Window 1
+    glBegin(GL_POLYGON);
+    glColor3ub (240,147, 0);
+
+    glVertex2d (215, 230);
+    glVertex2d (260, 230);
+    glVertex2d (260, 300);
+    glVertex2d (215, 300);
+    glEnd();
+    //Window 1
+
+//window 1 upper radius
+circle(237.5,298,22.7);
+
+//window 1 lines
+window_line((215+260)/2,230,298+22.7,215,260,255,290);
+
+
+//window 1 upper circle
+glColor3ub (240,147, 0);
+circle(237.5,388,22.7);
+//lines for circle
+glLineWidth(2.5);
+glBegin(GL_LINES);
+glColor3ub (0,0, 0);
+glVertex3f(237.5, 450, 0.0);
+glVertex3f(237.5, 365, 0);
+glEnd();
+
+glLineWidth(2.5);
+glBegin(GL_LINES);
+glColor3ub (0,1, 0);
+glVertex3f(270, 387, 0);
+glVertex3f(210, 387, 0);
+glEnd();
+
+
+//2nd window
+    glBegin(GL_POLYGON);
+    glColor3ub (240,147, 0);
+
+    glVertex2d (315, 120);
+    glVertex2d (360, 120);
+    glVertex2d (360, 165);
+    glVertex2d (315, 165);
+    glEnd();
+glLineWidth(2.5);
+glBegin(GL_LINES);
+glColor3ub (0,1, 0);
+glVertex3f((315+360)/2, 120, 0);
+glVertex3f((315+360)/2, 165, 0);
+glEnd();
+glBegin(GL_LINES);
+glColor3ub (0,1, 0);
+glVertex3f(315, (120+165)/2, 0);
+glVertex3f(360, (120+165)/2, 0);
+glEnd();
+
+//3rd window
+    glBegin(GL_POLYGON);
+    glColor3ub (240,147, 0);
+
+    glVertex2d (590, 240);
+    glVertex2d (635, 240);
+    glVertex2d (635, 285);
+    glVertex2d (590, 285);
+    glEnd();
+
+glLineWidth(2.5);
+glBegin(GL_LINES);
+glColor3ub (0,1, 0);
+glVertex3f((590+635)/2, 240, 0);
+glVertex3f((590+635)/2, 285, 0);
+glEnd();
+
+glBegin(GL_LINES);
+glColor3ub (0,1, 0);
+glVertex3f(590, (240+285)/2, 0);
+glVertex3f(635, (240+285)/2, 0);
+glEnd();
+
+
+
+
+// 240,147,0 color fow indow
     glFlush();
 }
 int main(int argc, char* argv[])
