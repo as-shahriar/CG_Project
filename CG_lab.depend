@@ -1,8 +1,11 @@
 # depslib dependency file v1.0
-1596815942 source:c:\users\asif shahriar\desktop\cg lab\cg_lab\main.cpp
+1596837689 source:c:\users\asif shahriar\desktop\cg lab\cg_lab\main.cpp
 	<windows.h>
 	<GL/glut.h>
 	<math.h>
+	<stdlib.h>
+	<time.h>
+	<stdio.h>
 
 1591095352 c:\tdm-gcc-32\include\gl\glut.h
 	<windows.h>
