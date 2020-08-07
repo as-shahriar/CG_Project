@@ -56,6 +56,16 @@ void fench(GLfloat ax,GLfloat by,GLfloat dx,GLfloat caph){
 
 }
 
+void window(GLfloat ax,GLfloat  ay,GLfloat  by,GLfloat dx){
+    glBegin(GL_POLYGON);
+    glColor3ub (240,147, 0);
+    glVertex2d (ax, ay);
+    glVertex2d (dx, ay);
+    glVertex2d (dx,by);
+    glVertex2d (ax, by);
+    glEnd();
+}
+
 void window_line(GLfloat xv,GLfloat y1v,GLfloat y2v,GLfloat x1h,GLfloat x2h,GLfloat y1h,GLfloat y2h){
     glColor3ub (1,1, 1);
     glLineWidth(2.5);
@@ -144,8 +154,9 @@ void display()
 
 
     //fench
-  fench(438,150,450,160);
-  fench(460,150,472,160);
+  fench(434,150,446,160);
+  fench(450,150,462,160);
+  fench(465,150,477,160);
 
   glLineWidth(7.5);
 glBegin(GL_LINES);
@@ -175,14 +186,7 @@ glEnd();
 
 
     //Window 1
-    glBegin(GL_POLYGON);
-    glColor3ub (240,147, 0);
-
-    glVertex2d (215, 230);
-    glVertex2d (260, 230);
-    glVertex2d (260, 300);
-    glVertex2d (215, 300);
-    glEnd();
+    window(215,230,300,260);
     //Window 1
 
 //window 1 upper radius
@@ -256,7 +260,17 @@ glVertex3f(635, (240+285)/2, 0);
 glEnd();
 
 
+//big house window 1
+window(525,120,185,565);
+circle(545,180,20);
+window_line(545,120,185+20,525,565,142,170);
+//big house window 1
 
+//big house window 2
+window(668,120,185,708);
+circle(688,180,20);
+window_line(688,120,185+20,668,708,142,170);
+//big house window 2
 
 // 240,147,0 color fow indow
     glFlush();
