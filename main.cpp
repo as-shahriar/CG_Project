@@ -9,6 +9,8 @@
 float px = 1050, py = 100,si=50;
 int value = 0;
 int arx [300],ary[300];
+double tp = 0,trinc=0.004; //tree position
+int trb = 0;
 
 void init(void)
 {
@@ -143,6 +145,49 @@ void window_line(GLfloat xv,GLfloat y1v,GLfloat y2v,GLfloat x1h,GLfloat x2h,GLfl
     glVertex3f(x2h, y2h, 0);
     glEnd();
 }
+
+void tree(){
+    printf("%d\n",trb);
+    if (tp>4.5 && trb == 0){
+        trinc = -0.004;
+        trb = 1;
+    }
+    else if (tp<-4.5 && trb == 1){
+        trinc = 0.004;
+        trb = 0;
+    }
+
+
+    tp += trinc;
+
+printf("%lf\n",tp);
+glColor3f(0,0,0);
+     circle(100,130,30);
+     circle(50,130,30);
+         glColor3ub (19,56, 75);
+        circle(124.5,147,40);
+        circle(25,140,43);
+        glColor3f(0,0,0);
+
+    glBegin(GL_POLYGON);
+
+    glVertex2d (65,100); //a
+    glVertex2d (65,200); //b
+    glVertex2d (85,200); //c
+    glVertex2d (85,100); //d
+    glEnd();
+
+    circle(112+tp,210,30);
+    circle(75+tp,230,50);
+    circle(125+tp,230,30);
+     circle(112+tp,250,30);
+      circle(85+tp,260,35);
+       circle(65+tp,260,30);
+       circle(45+tp,230,30);
+       circle(58+tp,210,30);
+
+}
+
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -173,6 +218,12 @@ glColor3f(1.0, 1.0, 1.0);
 circle(px,py,si);
 //Moon
 
+    //star
+putStars();
+//star
+
+
+tree();
 
     //field
     glColor3ub (0,1, 4);
@@ -201,9 +252,6 @@ circle(px,py,si);
     glEnd();
     //field
 
-    //star
-putStars();
-//star
 
     house(170,340,305,160);
     house(235,180,430,100);
