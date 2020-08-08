@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 
-double px = 1090, py = 100,si=90;
+double px = 1090, py = 100,si=90,c_x4=0,c_x3=0,c_x2=0,c_x1=0;
 int value = 0;
 int arx [300],ary[300];
 double tp = 0,trinc=0.002; //tree position
@@ -186,6 +186,18 @@ glColor3f(0,0,0);
 
 }
 
+void cloud(GLfloat x,GLfloat y,GLfloat s){
+    glColor3f(0.94,0.94,0.97);
+    circle(100+x*s,300+y*s,30);
+    circle(70+x*s,320+y*s,30);
+    circle(50+x*s,300+y*s,30);
+    circle(32+x*s,285+y*s,30);
+    circle(120+x*s,275+y*s,25);
+    circle(90+x*s,275+y*s,30);
+    circle(62+x*s,285+y*s,35);
+}
+
+
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -219,6 +231,31 @@ circle(px,py,si);
     //star
 putStars();
 //star
+
+double c_speed =0.039;
+if(c_x4>268) c_x4 = -875;
+c_x4 += c_speed;
+
+if(c_x3>568) c_x3 = -575;
+c_x3 += c_speed;
+
+
+if(c_x2>768) c_x2 = -375;
+c_x2 += c_speed;
+
+
+if(c_x1>978) c_x1 = -200;
+c_x1 += c_speed;
+
+
+
+
+cloud(65+c_x1,195,1);
+cloud(20+c_x1,190,1);
+cloud(230+c_x2,120,1);
+cloud(430+c_x3,200,1);
+cloud(730+c_x4,150,1);
+
 
 
 tree();
@@ -398,7 +435,6 @@ window_line(688,120,185+20,668,708,142,170);
 
 
 //Moon
-
 
 
 
