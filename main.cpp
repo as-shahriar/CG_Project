@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 
-double px = 1090, py = 100,si=90,c_x4=0,c_x3=0,c_x2=0,c_x1=0;
+double px = 1090, py = 100,si=90,c_x4=0,c_x3=0,c_x2=0,c_x1=0,fp=0;
 int value = 0;
 int arx [300],ary[300];
 double tp = 0,trinc=0.002; //tree position
@@ -224,7 +224,7 @@ else{
     si-=0.001;
 }
 
-glColor3f(1.0, 1.0, 1.0);
+glColor3f(0.996, 0.988, 0.843);
 circle(px,py,si);
 //Moon
 
@@ -434,8 +434,59 @@ window_line(688,120,185+20,668,708,142,170);
 //big house window 2
 
 
-//Moon
+//Wind mill
+glColor3f(0, 0, 0);
+glBegin(GL_POLYGON);
+glVertex3f(830, 100, 0);
+glVertex3f(830, 125, 0);
+glVertex3f(900, 125, 0);
+glVertex3f(900, 100, 0);
+glEnd();
 
+//stand
+glBegin(GL_POLYGON);
+glVertex3f(845, 120, 0);
+glVertex3f(855, 400, 0);
+glVertex3f(875, 400, 0);
+glVertex3f(885, 120, 0);
+glEnd();
+
+
+
+
+
+
+fp -= 0.1;
+
+//fan
+glColor3f(0, 0, 0);
+glPushMatrix();
+glLineWidth(15);
+glTranslatef(866.5, 400,0);
+glRotatef(fp,0,0,1.0);
+glBegin(GL_LINES);
+glVertex3f(0, 0, 0);
+glVertex3f(100, 100, 0);
+glEnd();
+
+glTranslatef(0, 0,0);
+glRotatef(120,0,0,1.0);
+glBegin(GL_LINES);
+glVertex3f(0, 0, 0);
+glVertex3f(100, 100, 0);
+glEnd();
+
+glTranslatef(0, 0,0);
+glRotatef(120,0,0,1.0);
+glBegin(GL_LINES);
+glVertex3f(0, 0, 0);
+glVertex3f(100, 100, 0);
+glEnd();
+
+
+glPopMatrix();
+circle(865,400,20);
+//Wind mill
 
 
 
