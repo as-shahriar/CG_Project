@@ -6,10 +6,10 @@
 #include <stdio.h>
 
 
-float px = 1050, py = 100,si=50;
+double px = 1090, py = 100,si=90;
 int value = 0;
 int arx [300],ary[300];
-double tp = 0,trinc=0.004; //tree position
+double tp = 0,trinc=0.002; //tree position
 int trb = 0;
 
 void init(void)
@@ -147,20 +147,18 @@ void window_line(GLfloat xv,GLfloat y1v,GLfloat y2v,GLfloat x1h,GLfloat x2h,GLfl
 }
 
 void tree(){
-    printf("%d\n",trb);
-    if (tp>4.5 && trb == 0){
-        trinc = -0.004;
+    if (tp>2.5 && trb == 0){
+        trinc = -0.002;
         trb = 1;
     }
     else if (tp<-4.5 && trb == 1){
-        trinc = 0.004;
+        trinc = 0.002;
         trb = 0;
     }
 
 
     tp += trinc;
 
-printf("%lf\n",tp);
 glColor3f(0,0,0);
      circle(100,130,30);
      circle(50,130,30);
@@ -202,16 +200,16 @@ void display()
     //background
 
 
-    if(py>700){
+if(py>660){
             value = 0;
-px = 1050;
+px = 1090;
  py = 100;
- si=50;
+ si=90;
 }
 else{
     px -= 0.018;
     py += 0.015;
-    si+=0.0012;
+    si-=0.001;
 }
 
 glColor3f(1.0, 1.0, 1.0);
